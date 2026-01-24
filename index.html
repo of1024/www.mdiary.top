@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>木的日记 - 记录心情，守护隐私</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#FFB6C1',
+                        secondary: '#E0F7FA',
+                        accent: '#81D4FA',
+                        neutral: '#FAFAFA',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .card-hover {
+                transition: transform 0.3s ease, box-shadow 0.3s ease;
+            }
+            .card-hover:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+            }
+        }
+    </style>
+</head>
+<body class="bg-neutral min-h-screen">
+    <!-- 导航栏（logo已改圆角） -->
+    <header class="sticky top-0 z-50 bg-white/80 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <!-- 导航栏logo：修改为全圆角（rounded-full），并优化尺寸适配 -->
+                <img src="logo-color.png" alt="木的日记" class="w-10 h-10 rounded-full object-cover">
+                <span class="text-xl font-bold text-gray-800">木的日记</span>
+            </div>
+            <nav class="hidden md:flex space-x-8 items-center">
+                <a href="#features" class="text-gray-600 hover:text-primary transition-colors py-2">功能特色</a>
+                <a href="#screenshots" class="text-gray-600 hover:text-primary transition-colors py-2">界面展示</a>
+                <a href="#privacy" class="text-gray-600 hover:text-primary transition-colors py-2">隐私保护</a>
+                <a href="#download" class="bg-primary text-white px-6 py-2 rounded-full hover:bg-primary/90 transition-colors">立即下载</a>
+                <!-- <a href="#reward" class="text-gray-600 hover:text-primary transition-colors py-2">打赏作者</a> -->
+            </nav>
+            <button class="md:hidden text-gray-600">
+                <i class="fa fa-bars text-xl"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- 英雄区（左侧logo和右侧图片都优化圆角） -->
+    <section class="bg-secondary py-20">
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-10">
+            <div class="md:w-1/2 text-center md:text-left">
+                <!-- 英雄区logo：修改为大圆角（rounded-2xl），和页面风格统一 -->
+                <img src="logo-text.png" alt="木的日记 Mood Diary" class="mx-auto md:mx-0 w-64 mb-8 rounded-2xl">
+                <h1 class="text-[clamp(2rem,5vw,3.5rem)] font-bold text-gray-800 mb-4 text-shadow">
+                    记录每一天的<span class="text-primary">心情与故事</span>
+                </h1>
+                <p class="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto md:mx-0 mb-10">
+                    木的日记是一款专注隐私保护的心情日记APP，支持云端加密备份，让你的心事只属于你自己。
+                </p>
+                <div class="flex flex-col sm:flex-row justify-center md:justify-start gap-4">
+                    <a href="#download" class="bg-primary text-white px-8 py-3 rounded-full text-lg font-medium hover:bg-primary/90 transition-colors shadow-lg shadow-primary/20">
+                        立即下载
+                    </a>
+                    <a href="#features" class="bg-white text-gray-800 px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors shadow-md">
+                        了解更多
+                    </a>
+                </div>
+            </div>
+            <!-- 加密成功图片：保持2xl圆角，和logo风格统一 -->
+            <div class="md:w-1/2">
+                <img src="encrypted-diary2.png" 
+                     alt="日记加密成功" 
+                     class="w-full h-auto rounded-2xl shadow-xl object-contain">
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心功能 -->
+    <section id="features" class="py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">核心功能</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-2xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-lock text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">云端加密备份</h3>
+                    <p class="text-gray-600">采用端到端加密技术，你的日记内容在上传云端前已完成加密，只有你能解密查看。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-smile-o text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">心情追踪</h3>
+                    <p class="text-gray-600">用表情标记每日心情，生成心情趋势图，帮你更好地了解自己的情绪变化。</p>
+                </div>
+                <div class="bg-white rounded-2xl p-8 shadow-md card-hover">
+                    <div class="w-14 h-14 bg-secondary rounded-full flex items-center justify-center mb-6">
+                        <i class="fa fa-search text-accent text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">智能搜索</h3>
+                    <p class="text-gray-600">支持关键词、日期、心情等多维度搜索，快速定位你想要找的日记内容。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 界面展示 -->
+    <section id="screenshots" class="bg-gray-50 py-16">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">界面展示</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-hover">
+                    <div class="bg-secondary p-4 rounded-t-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800">心情追踪</h3>
+                        <p class="text-gray-700 mt-1">记录每天的心情变化，生成心情趋势图</p>
+                    </div>
+                    <img src="shouye.jpg" alt="心情追踪界面" class="rounded-b-xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="card-hover">
+                    <div class="bg-secondary p-4 rounded-t-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800">日记列表</h3>
+                        <p class="text-gray-700 mt-1">按日期查看所有日记，支持快速定位</p>
+                    </div>
+                    <img src="liebiao.jpg" alt="日记列表界面" class="rounded-b-xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="card-hover">
+                    <div class="bg-secondary p-4 rounded-t-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800">个人中心</h3>
+                        <p class="text-gray-700 mt-1">管理个人信息和应用设置</p>
+                    </div>
+                    <img src="wode.jpg" alt="个人中心界面" class="rounded-b-xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="card-hover">
+                    <div class="bg-secondary p-4 rounded-t-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800">日记详情</h3>
+                        <p class="text-gray-700 mt-1">查看和编辑完整日记内容</p>
+                    </div>
+                    <img src="xiangqing.jpg" alt="日记详情界面" class="rounded-b-xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="card-hover">
+                    <div class="bg-secondary p-4 rounded-t-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800">智能搜索</h3>
+                        <p class="text-gray-700 mt-1">多维度搜索，快速找到目标日记</p>
+                    </div>
+                    <img src="sousuo.jpg" alt="搜索界面" class="rounded-b-xl shadow-lg w-full h-auto object-cover">
+                </div>
+                <div class="card-hover">
+                    <div class="bg-secondary p-4 rounded-t-xl shadow-lg">
+                        <h3 class="text-xl font-semibold text-gray-800">高级筛选</h3>
+                        <p class="text-gray-700 mt-1">根据条件筛选特定时期的日记</p>
+                    </div>
+                    <img src="rili.jpg" alt="筛选界面" class="rounded-b-xl shadow-lg w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 隐私保护（集成加密效果图） -->
+    <section id="privacy" class="py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-8">我们如何保护你的隐私</h2>
+                
+                <!-- 加密效果图展示卡片 -->
+                <div class="bg-white rounded-2xl p-8 shadow-md mb-8">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">你的日记在云端的真实状态</h3>
+                    <p class="text-gray-600 mb-6">所有内容加密后存储，服务器仅能看到密文，无法读取任何日记原文</p>
+                    
+                    <!-- 加密效果图（带标注） -->
+                    <div class="relative rounded-xl overflow-hidden shadow-lg border border-gray-100 max-w-2xl mx-auto">
+                        <img src="encrypted-diary.png" 
+                             alt="加密后的日记内容" 
+                             class="w-full h-auto">
+                        <!-- 品牌标识（logo保持全圆角） -->
+                        <div class="absolute bottom-3 right-3 bg-white/80 backdrop-blur-sm rounded-full px-2 py-1 text-xs text-gray-600 flex items-center">
+                            <img src="logo-color.png" alt="木的日记" class="w-4 h-4 mr-1 rounded-full object-cover">
+                            木的日记 · 加密存储
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 技术说明卡片 -->
+                <div class="bg-white rounded-2xl p-8 shadow-md">
+                    <div class="flex flex-col md:flex-row items-center gap-8">
+                        <div class="w-24 h-24 bg-secondary rounded-full flex items-center justify-center flex-shrink-0">
+                            <i class="fa fa-shield text-accent text-3xl"></i>
+                        </div>
+                        <div class="text-left">
+                            <h3 class="text-xl font-semibold mb-3">端到端加密</h3>
+                            <p class="text-gray-600 mb-4">你的日记内容在设备上完成加密后才会上传至云端，我们的服务器无法解密你的任何日记内容。</p>
+                            <h3 class="text-xl font-semibold mb-3">零知识架构</h3>
+                            <p class="text-gray-600">我们的服务器无法获取你的明文日记，也无法关联你的身份信息与日记内容，真正实现匿名化存储。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 下载区域 -->
+    <section id="download" class="bg-primary py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">立即下载木的日记</h2>
+            <p class="text-white/90 mb-8 max-w-xl mx-auto">
+                开始记录你的心情故事，让每一天都值得被珍藏
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <!-- <a href="#" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors shadow-lg">
+                    <i class="fa fa-apple mr-2"></i> App Store
+                </a> -->
+                <a href="https://agc-storage-drcn.platform.dbankcloud.cn/v0/default-bucket-raubg/mdiary%2F%E6%9C%A8%E7%9A%84%E6%97%A5%E8%AE%B0.apk?token=c7275c00-46ef-419d-81bc-8ded5d28e317" class="bg-white text-primary px-8 py-3 rounded-full text-lg font-medium hover:bg-gray-100 transition-colors shadow-lg">
+                    <i class="fa fa-android mr-2"></i> 安卓下载
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 打赏区域（新增） -->
+    <section id="reward" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <!-- <h2 class="text-3xl md:text-4xl font-bold mb-4">打赏作者</h2>
+                <p class="text-gray-600 mb-10">你的支持是我们持续更新维护的最大动力 💖</p> -->
+                
+                <!-- 收款码展示卡片 -->
+                <!-- <div class="bg-white rounded-2xl p-8 shadow-md">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 justify-items-center">
+                        <div class="card-hover w-full max-w-xs">
+                            <div class="bg-green-50 rounded-xl p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2">微信支付</h3>
+                                <p class="text-gray-500 text-sm mb-4">扫码打赏，感谢支持</p>
+                                <a href="wechat-pay.png" target="_blank" class="block">
+                                    <img src="wechat-pay.png" alt="微信收款码" class="w-full h-auto rounded-lg shadow-md">
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="card-hover w-full max-w-xs">
+                            <div class="bg-blue-50 rounded-xl p-6 text-center">
+                                <h3 class="text-xl font-semibold mb-2">支付宝</h3>
+                                <p class="text-gray-500 text-sm mb-4">扫码打赏，感谢支持</p>
+                                <a href="alipay.png" target="_blank" class="block">
+                                    <img src="alipay.jpg" alt="支付宝收款码" class="w-full h-auto rounded-lg shadow-md">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚（logo保持全圆角） -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-2 mb-4">
+                        <img src="logo-color.png" alt="木的日记" class="w-8 h-8 rounded-full object-cover">
+                        <span class="text-lg font-bold">木的日记</span>
+                    </div>
+                    <p class="text-gray-400">记录心情，守护隐私</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">产品</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">功能特色</a></li>
+                        <li><a href="#screenshots" class="text-gray-400 hover:text-white transition-colors">界面展示</a></li>
+                        <li><a href="#privacy" class="text-gray-400 hover:text-white transition-colors">隐私保护</a></li>
+                    </ul>
+                </div>
+                <!-- <div>
+                    <h4 class="text-lg font-semibold mb-4">打赏作者</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#reward" class="text-gray-400 hover:text-white transition-colors">
+                            <i class="fa fa-heart text-primary mr-2"></i>扫码支持
+                        </a></li>
+                    </ul>
+                </div> --> 
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">联系我们</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400"><i class="fa fa-envelope-o mr-2"></i>muderriji@foxmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400">
+                <p>© 2026 木的日记. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- 返回顶部按钮 -->
+    <button id="backToTop" class="fixed bottom-6 right-6 bg-primary text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg opacity-0 transition-opacity duration-300">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // 返回顶部按钮
+        const backToTopBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopBtn.classList.replace('opacity-0', 'opacity-100');
+            } else {
+                backToTopBtn.classList.replace('opacity-100', 'opacity-0');
+            }
+        });
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
